@@ -24,4 +24,19 @@ module.exports = {
     const { token, ...user } = ctx.request.user
     return user
   },
+
+  getUser(parent, { id }, ctx, info) {
+    return ctx.db.query.user({ where: { id } }, info)
+  },
+
+  getUserContent(parent, { id }, ctx, info) {
+    const where = {
+      isPublished: true,
+      author: {
+        id,
+      },
+    }
+
+    return ctx.db.query.posts({ where }, info)
+  },
 }
