@@ -3,3 +3,5 @@
 directive @isAuthenticated on QUERY | FIELD | MUTATION
 
 directive @hasRole(roles: [Role]) on QUERY | FIELD | MUTATION
+
+directive @maxDepth(depth: Int) on QUERY | MUTATION
