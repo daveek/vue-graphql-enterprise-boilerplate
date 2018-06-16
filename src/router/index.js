@@ -33,7 +33,8 @@ const router = new VueRouter({
 
 // Before each route evaluates...
 router.beforeEach(async (routeTo, routeFrom, next) => {
-  const user = await getCurrentUser()
+  const user = (await getCurrentUser()) || {}
+  routeTo.params.user = user
 
   // Check if auth is required on this route
   // (including nested routes).
